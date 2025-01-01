@@ -82,7 +82,7 @@ print(f"Predicted stock prices for {stock_symbol} on {predicted_date_str}:")
 print(predicted_df)  # Display the predicted values
 
 # Plot the actual vs predicted prices
-plt.figure(figsize=(12, 6))
+plt.figure(figsize=(12, 5))#6
 plt.plot(data.index[-30:], data[['Open', 'High', 'Low', 'Close']].iloc[-30:], label='Actual Prices', color='blue')  # Last 30 actual days
 plt.scatter(predicted_date, predicted_next_day[0, 0], color='red', label='Predicted Open')  # Predicted Open price
 plt.scatter(predicted_date, predicted_next_day[0, 1], color='green', label='Predicted High')  # Predicted High price
