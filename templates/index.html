@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block special_content %}{% endblock %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<!-- HERO -->
+
+<script src="{% static 'smoothscroll.js' %}"></script>
+
+<section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
+
+  <div class="bg-overlay"></div>
+
+     <div class="container">
+          <div class="row">
+
+               <div class="col-lg-8 col-md-10 mx-auto col-12">
+                    <div class="hero-text mt-5 text-center">
+
+                          <h6 data-aos="fade-up" data-aos-delay="300">machine learning</h6>
+
+                          <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">stock price prediction</h1>
+
+                          <a href="{% url 'dashboard' %}"  class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">Dashboard</a>
+
+                          <a href="{% url 'prediction' %}"  class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">predictions</a>
+                         
+                    </div>
+               </div>
+
+          </div>
+     </div>
+</section>
+
+
+<section class="feature" id="feature">
+<div class="container">
+  <div class="row">
+
+      <div class="d-flex flex-column justify-content-center ml-lg-auto mr-lg-5 col-lg-5 col-md-6 col-12">
+          <h2 class="mb-3 text-white" data-aos="fade-up">Real-Time Stock Market Analysis</h2>
+
+          <h6 class="mb-4 text-white" data-aos="fade-up">Insightful, strategic, comprehensive.</h6>
+
+          <p data-aos="fade-up" data-aos-delay="200">Our platform offers real-time market analysis, trend prediction, and dynamic visualizations. Whether you're an experienced investor or new to finance, our tools equip you with critical insights to maintain a competitive edge.</p>
+          <a href="{% url 'dashboard' %}"  class="btn custom-btn bg-color mt-3" data-aos="fade-up" data-aos-delay="300" >Dashboard</a>
+      </div>
+
+      <div class="mr-lg-auto mt-3 col-lg-4 col-md-6 col-12">
+           <div class="about-working-hours">
+                <div class=>
+
+                    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+                    <dotlottie-player src="https://lottie.host/ba0959c4-3230-4518-b554-33bd2c9b471e/EJdi0RssoE.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
+                    
+                </div>
+           </div>
+      </div>
+
+  </div>
+</div>
+</section><section class="about section" id="about">
+    <div class="container">
+        <div class="row justify-content-center d-flex">
+
+            <!-- Widget 1 -->
+            <div class="col-12 col-md-4">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                        {
+                            "symbol": "NASDAQ:TSLA",
+                            "width": 350,
+                            "height": 220,
+                            "locale": "en",
+                            "dateRange": "1D",
+                            "colorTheme": "light",
+                            "isTransparent": false,
+                            "autosize": false,
+                            "largeChartUrl": ""
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <!-- Widget 2 -->
+            <div class="col-12 col-md-4">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                        {
+                            "symbol": "NASDAQ:AAPL",
+                            "width": 350,
+                            "height": 220,
+                            "locale": "en",
+                            "dateRange": "1D",
+                            "colorTheme": "light",
+                            "isTransparent": false,
+                            "autosize": false,
+                            "largeChartUrl": ""
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <!-- Widget 3 -->
+            <div class="col-12 col-md-4">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                        {
+                            "symbol": "NASDAQ:NVDA",
+                            "width": 350,
+                            "height": 220,
+                            "locale": "en",
+                            "dateRange": "1D",
+                            "colorTheme": "light",
+                            "isTransparent": false,
+                            "autosize": false,
+                            "largeChartUrl": ""
+                        }
+                    </script>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<!-- CLASS -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12 text-center mb-5 pt-5">
+                <h6 data-aos="fade-up" data-aos-delay="100" class="pt-2 mb-4" style="font-family: sans-serif;">In a world of uncertainty, knowledge isn’t just power—it’s protection. Invest wisely.</h6>
+                <a href="{% url 'home' %}" data-toggle="modal" data-target="#membershipForm"><h2 data-aos="fade-up" data-aos-delay="200" data-toggle="modal" data-target="#membershipForm" class="mb-4" style="font-family: sans-serif;">next-price</h2> </a>
+                <p data-aos="fade-up" data-aos-delay="300" class="mt-3" style="font-family: serif; font-style: italic; max-width: 800px; margin: 0 auto; margin-bottom: 20px;">"Investing in the stock market without proper knowledge and understanding can be risky and may lead to significant financial losses. Market volatility, economic uncertainties, and poor diversification can severely impact your investments. Without a solid grasp of financial metrics, risk assessments, and market trends, it becomes challenging to make informed decisions. Relying solely on predictive analysis without understanding its limitations can result in misguided strategies. It's crucial to recognize that even with advanced tools offering real-time insights and interactive visualizations, successful investing requires continuous learning and careful planning. Always approach the market with caution and consider seeking professional financial advice to mitigate risks."</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- CONTACT -->
+<section class="contact section" id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="ml-auto col-lg-5 col-md-6 col-12">
+                <a href="#" data-toggle="modal" data-target="#membershipForm">
+                    <h2 class="mb-4 pb-2" data-aos="fade-up" >Feel free to ask anything</h2>
+                </a>
+                <form action="/contact/" method="post" class="contact-form webform" role="form">
+                    {% csrf_token %}
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                    <textarea class="form-control" rows="5" id="message" name="desc" placeholder="Message"></textarea>
+                    <button type="submit" class="form-control" id="submit-button" name="submit">Send Message</button>
+                </form>
+            </div>
+            <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
+                <h2 class="mb-4" data-aos="fade-up" >Where you can <span>find us</span></h2>
+                <p>We actively engage with users to collect valuable feedback, ensuring that each feature is designed and refined to offer an exceptional and intuitive user experience. This collaborative approach allows us to continually enhance the functionality and usability of our products, making sure they align with the evolving preferences of our users.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Right Content -->
+    <div class="relative lg:w-1/2 w-full h-full rounded-2xl overflow-hidden">
+      
+      
+     
+    </div>
+  </div>
+</section>
+
+
+
+
+{% endblock %}

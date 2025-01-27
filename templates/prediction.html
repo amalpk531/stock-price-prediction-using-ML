@@ -1,0 +1,294 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Stock Price Prediction{% endblock %}
+
+{% block body %}
+
+<script src="{% static 'smoothscroll.js' %}"></script>
+
+
+<!-- Loading Overlay with Dark Theme -->
+<div class="loading-overlay" id="loadingOverlay" style="background: rgba(13, 17, 23, 0.95);">
+    <div class="banter-loader">
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+    </div>
+</div>
+
+<section class="feature min-vh-100 d-flex align-items-center" style="background: #0d1117;">
+    <div class="container-fluid px-4 py-5">
+        <!-- Header Section -->
+        <div class="text-center w-100 mb-5">
+            <h1 class="text-muted" data-aos="fade-up" data-aos-delay="500">stock price prediction</h1>
+        </div>
+
+        <!-- Input Form Section -->
+        <section class="py-4 mt-2 rounded-3 box">
+            <div class="container px-4 mx-auto">
+                <div class="flex flex-col text-center w-full mb-4">
+                    <form method="post" action="" id="dataForm" class="text-center">
+                        {% csrf_token %}
+                        <input
+                            type="text"
+                            name="stock_symbol"
+                            placeholder="Enter stock symbol... (e.g., AAPL)"
+                            class="form-control mt-3 text-center"
+                            style="background-color: #0d1117; color: #c9d1d9; border: 1px solid #30363d; padding: 0.75rem; font-size: 1rem; border-radius: 6px;"
+                            data-aos="fade-up"
+                            data-aos-delay="600"
+                            required
+                        >
+                        <button
+                            type="submit"
+                            data-aos="fade-up" data-aos-delay="600"
+                            class=" btn-primary w-100 custom-btn bordered mt-3">
+                            Predict
+                        </button>
+                    
+                    </form>
+                </div>
+
+                {% if error %}
+                <div class="mt-4 text-center" style="color: #f85149;">
+                    {{ error }}
+                </div>
+                {% endif %}
+            </div>
+        </section>
+        <div class="py-4 py-md-8 py-lg-12 mt-2 rounded-3 w-100"></div>
+
+
+        {% if predicted_open %}
+        <!-- Main Stats Grid -->
+        <div class="row g-4 mb-4 mt-4">
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="600">
+                <div class="card h-100 border-0 rounded-3" style="background-color: #161b22; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <div class="box card-body">
+                        <h6 class="card-subtitle mb-2" style="color: #8b949e;">Open</h6>
+                        <h2 class="card-title mb-0" style="color: #c9d1d9; font-family: 'Inter', sans-serif;">{{ predicted_open }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="600">
+                <div class="card h-100 border-0 rounded-3" style="background-color: #161b22; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <div class="box card-body">
+                        <h6 class="card-subtitle mb-2" style="color: #8b949e;">Low</h6>
+                        <h2 class="card-title mb-0" style="color: #c9d1d9; font-family: 'Inter', sans-serif;">{{ predicted_low }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="600">
+                <div class="card h-100 border-0 rounded-3" style="background-color: #161b22; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <div class="box card-body">
+                        <h6 class="card-subtitle mb-2" style="color: #8b949e;">High</h6>
+                        <h2 class="card-title mb-0" style="color: #c9d1d9; font-family: 'Inter', sans-serif;">{{ predicted_high }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="600">
+                <div class="card h-100 border-0 rounded-3" style="background-color: #161b22; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <div class="box card-body">
+                        <h6 class="card-subtitle mb-2" style="color: #8b949e;">Close</h6>
+                        <h2 class="card-title mb-0" style="color: #c9d1d9; font-family: 'Inter', sans-serif;">{{ predicted_close }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secondary Stats Grid -->
+        <div class="row g-4 mb-4 ">
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="600">
+                <div class="card h-100 border-0 rounded-3 custom-btnp" style="background-color: #161b22; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <div class="box card-body">
+                        <a href="https://finance.yahoo.com/rss/headline?s={{ symbol }}"><h6 class="card-subtitle mb-3" style="color: #8b949e;">sentiment score</h6></a>
+                        <div class="d-flex gap-4">
+                            <h2 class="mb-0" style="color: #c9d1d9; font-family: 'Inter', sans-serif;">{{sentiment}} : {{sentiment_score}}</h2>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="600">
+                <div class="card h-100 border-0 rounded-3" style="background-color: #161b22; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <div class="box card-body">
+                        <h6 class="card-subtitle mb-3" style="color: #8b949e;">Ticker info : <strong>{{ symbol }}</strong></h6>
+                        <div class="d-flex flex-column gap-2">
+                            <h2 class="mb-0" style="color: #c9d1d9; font-family: 'Inter', sans-serif;">Date: {{ t_date }}</h2>
+                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stock Graph and Value Section -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="600">
+                <div class="card h-100 border-0 rounded-3" style="background-color: #161b22; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <div class="box card-body">
+                        <img src="data:image/png;base64,{{ graph }}" alt="Stock Prices Graph" class="img-fluid rounded-3">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="600">
+                <div class="card h-100 border-0 rounded-3" style="background-color: #161b22; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <div class="box card-body">
+                        <div class="about-working-hours">
+                            <div>
+                                <p class="mt-3 d-block" style="color: #c9d1d9;">current trend:<strong> {{ trend }}</strong></p>
+                                <p id="predictionResults" class="mt-3" style="color: #c9d1d9;">predicted open:<strong> {{ predicted_open }}</strong></p>
+                                <p class="mt-3 d-block" style="color: #c9d1d9;">predicted high: <strong> {{ predicted_high }}</strong></p>
+                                <p class="mt-3 d-block" style="color: #c9d1d9;">predicted low: <strong> {{ predicted_low }}</strong></p>
+                                <p class="mt-3 d-block" style="color: #c9d1d9;">predicted close:<strong> {{ predicted_close }}</strong></p>
+                                <p class="mt-3 d-block" style="color: #c9d1d9;"><strong> Model metrics</strong></p>
+                                <p class="mt-3 d-block" style="color: #c9d1d9;">Mean Absolute Error:<strong> {{ mae }}</strong></p>
+                                <p class="mt-3 d-block" style="color: #c9d1d9;">RMSE:<strong> {{ rmse }}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Combined Value Section -->
+        <div class="card border-0 rounded-3 mt-4" data-aos="fade-up" data-aos-delay="600" style="background-color: #161b22; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <div class="box card-body text-center">
+                <p style="color: #c9d1d9; font-size: 1.25rem; margin: 0;">
+                    stock value: {{ weighted_prediction}}
+                </p>
+            </div>
+        </div>
+
+        <!-- Chart Container for TradingView -->
+        <section class="mt-5 py-5 rounded-3" style="background-color: #161b22; box-shadow: 0 8px 24px rgba(0,0,0,0.2);" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1000" data-aos-delay="500">
+            <h2 class="h4 mb-4 text-center" style="color: #8b949e;">Combined graph with historical data and prediction of {{ symbol }} stock on {{ t_date }}</h2>        
+            <div class="chart-container w-100" style="height: 600px;">
+                <div id="tvchart" class="w-100 h-100 rounded-3 overflow-hidden"></div>
+            </div>
+        </section>
+
+        <!-- Original TradingView Chart Script -->
+        <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+        <script>
+            const getData = async () => {
+                try {
+                    const res = await fetch("{% static 'data.csv' %}");
+                    const resp = await res.text();
+
+                    const cdata = resp.split('\n')
+                        .slice(4)
+                        .filter(row => row.trim())
+                        .map((row) => {
+                            const [date, close, high, low, open] = row.split(',');
+                            const timestamp = new Date(date).getTime();
+                            return {
+                                time: timestamp / 1000,
+                                open: parseFloat(open),
+                                high: parseFloat(high),
+                                low: parseFloat(low),
+                                close: parseFloat(close),
+                            };
+                        });
+
+                    return cdata;
+                } catch (error) {
+                    console.error('Error loading data:', error);
+                    return [];
+                }
+            };
+
+            const displayChart = async () => {
+                try {
+                    const chartProperties = {
+                        width: document.getElementById('tvchart').clientWidth,
+                        height: 600,
+                        timeScale: {
+                            timeVisible: true,
+                            secondsVisible: false,
+                        },
+                        rightPriceScale: {
+                            visible: true,
+                            borderColor: '#30363d',
+                        },
+                        layout: {
+                            background: { color: '#0d1117' },
+                            textColor: '#c9d1d9',
+                        },
+                        grid: {
+                            vertLines: { color: '#161b22' },
+                            horzLines: { color: '#161b22' },
+                        },
+                    };
+
+                    const domElement = document.getElementById('tvchart');
+                    const chart = LightweightCharts.createChart(domElement, chartProperties);
+
+                    const candlestickSeries = chart.addCandlestickSeries({
+                        upColor: '#238636',
+                        downColor: '#f85149',
+                        wickUpColor: '#238636',
+                        wickDownColor: '#f85149',
+                        borderVisible: false,
+                        priceFormat: {
+                            type: 'price',
+                            precision: 2,
+                            minMove: 0.01,
+                        },
+                    });
+
+                    const data = await getData();
+                    if (data.length > 0) {
+                        candlestickSeries.setData(data);
+                        chart.timeScale().fitContent();
+                    }
+
+                    window.addEventListener('resize', () => {
+                        chart.resize(domElement.clientWidth, 600);
+                    });
+                } catch (error) {
+                    console.error('Error displaying chart:', error);
+                }
+            };
+
+            document.addEventListener('DOMContentLoaded', displayChart);
+        </script>
+        {% endif %}
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const form = document.getElementById('dataForm');
+                const loadingOverlay = document.getElementById('loadingOverlay');
+                const predictionResults = document.getElementById('predictionResults');
+        
+                if (form && loadingOverlay) {
+                    form.addEventListener('submit', function (e) {
+                        loadingOverlay.style.display = 'block';
+                    });
+                }
+        
+                window.addEventListener('load', function () {
+                    if (loadingOverlay) {
+                        loadingOverlay.style.display = 'none';
+                    }
+        
+                    if (predictionResults) {
+                        // Smooth scroll to results with offset
+                        setTimeout(() => {
+                            window.scrollBy({ top: 466, behavior: 'smooth' });
+                        }, 200);
+                    }
+                });
+            });
+        </script>
+        
+    </div>
+</section>
+{% endblock %}

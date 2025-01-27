@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block body %}
+<script src="{% static 'smoothscroll.js' %}"></script>
+
+<section class="contact section" id="contact" style="background-color:rgb(235, 234, 234);">
+  {% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong></strong> {{message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+  <div class="container">
+   <div class="row">
+
+        <div class="ml-auto col-lg-5 col-md-6 col-12">
+          <a href="#"  data-aos="fade-up" data-aos-delay="300" data-toggle="modal" data-target="#membershipForm"><h2 class="mb-4 pb-2" data-aos="fade-up" data-aos-delay="200">Feel free to ask anything</h2></a>
+            
+                   
+            <form action="/contact/" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
+              {% csrf_token %}
+                <input type="text" class="form-control" name="name"id="name" placeholder="Name">
+
+                <input type="email" class="form-control" name="email"id="email" placeholder="Email">
+
+                <textarea class="form-control" rows="5" id="message" name="desc"  placeholder="Message"></textarea>
+
+                <button type="submit" class="form-control" id="submit-button" name="submit">Send Message</button>
+            </form>
+        </div>
+
+        <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
+            <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">Where you can <span>find us</span></h2>
+
+  <p>We actively engage with users to collect valuable feedback, ensuring that each feature is designed and refined to offer an exceptional and intuitive user experience. This collaborative approach allows us to continually enhance the functionality and usability of our products, making sure they align with the evolving preferences of our users.</p>
+
+</section>
+</section>
+
+<!-- Right Content -->
+<div class="relative lg:w-1/2 w-full h-full rounded-2xl overflow-hidden">
+  
+  
+ 
+</div>
+</div>
+</section>
+{% endblock body %}
