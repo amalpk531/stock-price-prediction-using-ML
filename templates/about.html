@@ -4,74 +4,125 @@
 {% block title %}Stock Market Overview{% endblock title %}
 
 {% block body %}
-<div class="container my-5">
-    <h1 class="text-center text-primary mb-4">Understanding the Stock Market</h1>
-    
-    <div class="row">
-        <div class="col-md-12">
-            <!-- Card 1: What is the Stock Market? -->
-            <div class="card bg-dark text-white mb-3">
-                <div class="card-header"><h2>What is the Stock Market?</h2></div>
-                <div class="card-body">
-                    <p>The stock market is a marketplace where individuals and institutions buy and sell ownership shares of publicly traded companies. It acts as a barometer of economic health and allows businesses to raise capital while offering investors a chance to participate in a company's success.</p>
+<section class="py-5" style="background-color:rgb(230, 230, 230);">
+    <div class="container">
+        <h1 class="text-center text-primary display-4 mb-5">Understanding the Stock Market</h1>
+        
+        <div class="row g-5">
+            <!-- Introduction Card -->
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light text-alert">
+                        <h2 class="h4 mb-0">What is the Stock Market?</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="lead mb-0">The stock market is a marketplace where individuals and institutions buy and sell ownership shares of publicly traded companies. It acts as a barometer of economic health and allows businesses to raise capital while offering investors a chance to participate in a company's success.</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 2: Key Features -->
-            <div class="card bg-dark text-white mb-3">
-                <div class="card-header">Key Features</div>
-                <div class="card-body">
-                    <h2>Key Features of the Stock Market</h2>
-                    <ol>
-                        <li><strong>Liquidity:</strong> The stock market provides a highly liquid environment where assets can be quickly bought and sold at current market prices.</li>
-                        <li><strong>Transparency:</strong> The market is regulated to ensure transparency in trades and pricing, allowing investors to make informed decisions.</li>
-                        <li><strong>Price Discovery:</strong> It enables the discovery of the fair market value of a company's shares based on supply and demand.</li>
-                    </ol>
+            <!-- Market Components Card -->
+            <div class=" col-md-6 my-4"">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-light text-alert">
+                        <h2 class="h4 mb-0">Market Components</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <h5 class="text-primary">Stock Exchanges</h5>
+                                <p>Organized marketplaces like NYSE and NASDAQ where securities are traded.</p>
+                            </li>
+                            <li class="mb-3">
+                                <h5 class="text-primary">Market Indices</h5>
+                                <p>Measurements of market segments like S&P 500, Dow Jones, and NASDAQ Composite.</p>
+                            </li>
+                            <li>
+                                <h5 class="text-primary">Market Participants</h5>
+                                <p class="mb-0">Individual investors, institutional investors, and market makers.</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 3: Risks -->
-            <div class="card bg-dark text-white mb-3">
-                <div class="card-header">Risks</div>
-                <div class="card-body">
-                    <h2>Risks Involved in the Stock Market</h2>
-                    <p>While investing in the stock market offers substantial opportunities for growth, it also comes with inherent risks that investors must consider. Some of the common risks include:</p>
-                    <ul>
-                        <li><strong>Market Volatility:</strong> The stock market can experience significant price fluctuations due to various factors, including economic conditions, news, and investor sentiment.</li>
-                        <li><strong>Economic Downturns:</strong> A broad market recession can lead to widespread losses across multiple sectors.</li>
-                        <li><strong>Company-Specific Risks:</strong> Issues like poor management, legal problems, or product failures can impact the financial health of a particular company.</li>
-                    </ul>
+            <!-- Key Features Card -->
+            <div class=" col-md-6 my-4"">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-light text-">
+                        <h2 class="h4 mb-0">Key Features</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <h5 class="text-primary">Liquidity</h5>
+                                <p>Quick buying and selling of assets at current market prices.</p>
+                            </li>
+                            <li class="mb-3">
+                                <h5 class="text-primary">Transparency</h5>
+                                <p>Regulated environment ensuring fair trading practices and pricing.</p>
+                            </li>
+                            <li>
+                                <h5 class="text-primary">Price Discovery</h5>
+                                <p class="mb-0">Dynamic determination of share values based on market forces.</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 4: Precautions -->
-            <div class="card bg-dark text-white mb-3">
-                <div class="card-header">Precautions</div>
-                <div class="card-body">
-                    <h2>Precautions for Safe Investing</h2>
-                    <p>To mitigate the risks involved in stock market investing, investors are advised to take certain precautions:</p>
-                    <ol>
-                        <li><strong>Diversification:</strong> Spread your investments across different sectors and asset classes to minimize risks associated with individual stocks.</li>
-                        <li><strong>Research:</strong> Conduct thorough research on the companies you are considering investing in, paying attention to their financials, growth potential, and industry trends.</li>
-                        <li><strong>Long-Term Strategy:</strong> Focus on a long-term investment horizon rather than seeking short-term gains to ride out market volatility.</li>
-                        <li><strong>Stop-Loss Orders:</strong> Consider using stop-loss orders to automatically sell stocks when they drop to a certain price, helping protect against large losses.</li>
-                        <li><strong>Consult Financial Advisors:</strong> Seek advice from financial professionals to guide you in making well-informed investment decisions.</li>
-                    </ol>
+            <!-- Risks Card -->
+            <div class=" col-md-6 my-4"">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-light text-">
+                        <h2 class="h4 mb-0">Investment Risks</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <h5 class="text-primary">Market Volatility</h5>
+                                <p>Price fluctuations due to economic conditions and market sentiment.</p>
+                            </li>
+                            <li class="mb-3">
+                                <h5 class="text-primary">Economic Risks</h5>
+                                <p>Impact of recessions, inflation, and global economic events.</p>
+                            </li>
+                            <li>
+                                <h5 class="text-primary">Company-Specific Risks</h5>
+                                <p class="mb-0">Management issues, competition, and business model challenges.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investment Strategies Card -->
+            <div class=" col-md-6 my-4"">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-light text-">
+                        <h2 class="h4 mb-0">Investment Strategies</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <h5 class="text-primary">Diversification</h5>
+                                <p>Spreading investments across different sectors and asset classes.</p>
+                            </li>
+                            <li class="mb-3">
+                                <h5 class="text-primary">Research & Analysis</h5>
+                                <p>Fundamental and technical analysis of potential investments.</p>
+                            </li>
+                            <li>
+                                <h5 class="text-primary">Risk Management</h5>
+                                <p class="mb-0">Using stop-loss orders and position sizing to protect capital.</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-wXbFVH1UuAWt2e2ZfD3gyll4sqkRcdLMe5mg1lAOUxRVMtQQYgM6bCXRJkb+m2fJ" crossorigin="anonymous"></script>
-
-<style>
-    .bg-dark {
-        background-color:rgb(255, 255, 254) !important;
-    }
-    .text-white {
-        color: black !important;
-    }
-</style>
-
+<!-- No need for Bootstrap JS if you're not using interactive components -->
 {% endblock body %}
