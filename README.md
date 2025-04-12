@@ -8,3 +8,6 @@ displaying the values in tradingview chart.
 prototype deployed in AWS EC2 Instance 
 
 http://51.20.85.198:8000/
+
+![A](https://github.com/user-attachments/assets/aadd3626-a51b-4100-aa08-d737386f9add)
+
